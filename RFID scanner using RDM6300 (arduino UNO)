@@ -1,0 +1,15 @@
+#include <SoftwareSerial.h>
+
+SoftwareSerial RFID(2, 3); // RX and TX pins for RDM6300
+
+void setup() {
+  Serial.begin(9600); // initialize serial communication
+  RFID.begin(9600); // initialize RFID communication
+}
+
+void loop() {
+  if (RFID.available() > 0) { // check if RFID data is available
+    char data = RFID.read(); // read the data
+    Serial.print(data); // print the data to the serial monitor
+  }
+}
